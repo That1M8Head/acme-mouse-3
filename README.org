@@ -1,11 +1,16 @@
 #+TITLE: acme-mouse-3.el
 #+AUTHOR: Arsalan Kazmi <sonicspeed848@gmail.com>
 
-#+DESCRIPTION: An Emacs package that provides the functionality to evaluate Elisp code using the right mouse button, inspired by Rob Pike's Acme editor.
+An Emacs package which lets you evaluate (run) Elisp code using the right mouse button, inspired by the "Execute text" command in Rob Pike's Acme editor.
 
 ** Usage
 
-The =eval-region-or-word= function is the function that does the evaluation. By default, it's bound to =<mouse-3>=, which corresponds to the right mouse button in Emacs.
+=eval-region-or-word= is the function that does the evaluation.
+
+By default, it's bound to =<mouse-3>=, which corresponds to the right mouse button in Emacs, as opposed to =<mouse-2>= (middle mouse) like it is in Acme because. . . I wanted it like that?
+
+To be fair, nowadays, more computers have only =<mouse-1>= and =<mouse-3>=, for example laptops, which makes all the sense. I suppose three-button mice were more common back then.
+** Customising
 
 If you want, you can bind this function to a custom keyboard shortcut.
 
@@ -15,9 +20,9 @@ For example, to bind it to the key combination =C-c e=, you can add the followin
 (global-set-key (kbd "C-c e") 'eval-region-or-word)
 #+END_SRC
 
-Now you can use the chosen method (right mouse button or custom keyboard shortcut) to evaluate Elisp code snippets in your Emacs environment.
+With this, in addition to the right mouse button, you can now use a keyboard shortcut to use the function.
 
-Just keep in mind acme-mouse-3 was designed specifically for the mouse and might break if the mouse isn't in an Emacs pane.
+Just keep in mind acme-mouse-3 was designed specifically for the mouse, and might break if the mouse isn't in an Emacs pane.
 
 ** How it works
 
@@ -30,7 +35,8 @@ Just keep in mind acme-mouse-3 was designed specifically for the mouse and might
 #+END_SRC
 
 + Next, we create a let-binding and define =region=, whose value depends on whether or not an active region (selection) is present.
-+ If it is, we set =region= to that.
++ A let-binding, in the context of Elisp, allows you to create temporary variables with specific values within a local block of code.
++ If there's an active region, we set the =region= variable to that.
 
 #+BEGIN_SRC emacs-lisp
 (let ((region (if (region-active-p)
@@ -64,5 +70,7 @@ Just keep in mind acme-mouse-3 was designed specifically for the mouse and might
 
 ** License
 
-This package is proudly free software, licensed under the GNU General Public License v3 or later.
+This package is licensed under the GNU General Public License v3 or later.
+
+Free Software, hell yeah!
 
