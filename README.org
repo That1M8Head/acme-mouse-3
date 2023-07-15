@@ -1,0 +1,68 @@
+#+TITLE: acme-mouse-3.el
+#+AUTHOR: Arsalan Kazmi <sonicspeed848@gmail.com>
+
+#+DESCRIPTION: An Emacs package that provides the functionality to evaluate Elisp code using the right mouse button, inspired by Rob Pike's Acme editor.
+
+** Usage
+
+The =eval-region-or-word= function is the main function responsible for evaluation. By default, it is bound to =<mouse-3>=, which corresponds to the right mouse button in Emacs.
+
+If you prefer, you can choose to bind this function to a custom keyboard shortcut. For example, to bind it to the key combination =C-c e=, you can add the following code to your Emacs configuration:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c e") 'eval-region-or-word)
+#+END_SRC
+
+Now you can use the chosen method (right mouse button or custom keyboard shortcut) to evaluate Elisp code snippets in your Emacs environment.
+
+Just keep in mind acme-mouse-3 was designed specifically for the mouse and might break if the mouse isn't in an Emacs pane.
+
+Feel free to customize the package behavior or key bindings according to your preferences and requirements.
+
+** How it works
+
++ First of all, we define =eval-region-or-word=.
+
+#+BEGIN_SRC emacs-lisp
+(defun eval-region-or-word ()
+  "Evaluate the current region or word under the mouse cursor."
+  (interactive)
+#+END_SRC
+
++ Next, we create a let-binding and define =region=, whose value depends on whether or not an active region (selection) is present.
++ If it is, we set =region= to that.
+
+#+BEGIN_SRC emacs-lisp
+(let ((region (if (region-active-p)
+                  (buffer-substring-no-properties (region-beginning) (region-end))
+#+END_SRC
+
++ Otherwise, we set the text cursor to where the mouse pointer is and temporarily modify the syntax table to include hyphens as part of words.
++ After that, =region= is set to the word the text cursor was moved to/is under, effectively setting =region= to the word under the mouse pointer.
+
+#+BEGIN_SRC emacs-lisp
+                (progn
+                  (mouse-set-point last-nonmenu-event)
+                  (with-syntax-table (copy-syntax-table (syntax-table))
+                    (modify-syntax-entry ?- "w")
+                    (thing-at-point 'word)))))) 
+#+END_SRC
+
++ After =region= is set, we check if =(= and =)= are the prefix and suffix of =region= respectively.
++ If not, we add that, so that it's a legitimate Lisp expression.
++ Finally, we read the value of =region= and evaluate it, which ends the function.
+
+#+BEGIN_SRC emacs-lisp
+(when region
+  (unless (string-prefix-p "(" region)
+    (setq region (concat "(" region)))
+  (unless (string-suffix-p ")" region)
+    (setq region (concat region ")")))
+  (eval (read region))
+)
+#+END_SRC
+
+** License
+
+This package is licensed under the GNU General Public License v3 or later. Please see the LICENSE file for more details.
+
