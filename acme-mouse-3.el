@@ -5,7 +5,7 @@
 ;; Package-Requires: ((emacs "24.4"))
 ;; Keywords: convenience, evaluation
 
-;; This package provides the functionality to evaluate Elisp code using the right mouse button (mouse-3), inspired by Rob Pike's Acme editor.
+;; This package lets you evaluate (run) Elisp code using the right mouse button, inspired by the “Execute text” command in Rob Pike’s Acme editor. 
 ;; It allows you to evaluate either the current region or the word under the mouse cursor.
 
 ;;; Commentary:
