@@ -5,9 +5,11 @@
 
 ** Usage
 
-The =eval-region-or-word= function is the main function responsible for evaluation. By default, it is bound to =<mouse-3>=, which corresponds to the right mouse button in Emacs.
+The =eval-region-or-word= function is the function that does the evaluation. By default, it's bound to =<mouse-3>=, which corresponds to the right mouse button in Emacs.
 
-If you prefer, you can choose to bind this function to a custom keyboard shortcut. For example, to bind it to the key combination =C-c e=, you can add the following code to your Emacs configuration:
+If you want, you can bind this function to a custom keyboard shortcut.
+
+For example, to bind it to the key combination =C-c e=, you can add the following code to your init.el:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c e") 'eval-region-or-word)
@@ -16,8 +18,6 @@ If you prefer, you can choose to bind this function to a custom keyboard shortcu
 Now you can use the chosen method (right mouse button or custom keyboard shortcut) to evaluate Elisp code snippets in your Emacs environment.
 
 Just keep in mind acme-mouse-3 was designed specifically for the mouse and might break if the mouse isn't in an Emacs pane.
-
-Feel free to customize the package behavior or key bindings according to your preferences and requirements.
 
 ** How it works
 
@@ -64,5 +64,5 @@ Feel free to customize the package behavior or key bindings according to your pr
 
 ** License
 
-This package is licensed under the GNU General Public License v3 or later. Please see the LICENSE file for more details.
+This package is proudly free software, licensed under the GNU General Public License v3 or later.
 
