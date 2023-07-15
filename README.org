@@ -68,6 +68,48 @@ Just keep in mind acme-mouse-3 was designed specifically for the mouse, and migh
 )
 #+END_SRC
 
+** Is this package useful?
+
+Okay, I don’t quite know how to say this tactfully, but it's possible that I slightly exaggerated the useful nature of the package. 
+
+Is it a very, very neat package?
+
+To be certain it is! It's an extremely neat package!
+
+I don't want anyone to say that it isn’t an astonishingly neat package - it is!
+
+Is it useful?
+
+Well that sort of depends on your definition of usefulness.
+
+From one perspective the useful is merely philosophical in nature. It’s more of a-
+
+[[https://github.com/akrito/acme-mouse][github.com/akrito/acme-mouse]]
+
+Okay, well good for you, you found the more popular and useful Acme Emacs mouse package.
+
+You found me out, user.
+
+I'm a liar and a cheat and you’re so clever.
+
+Look, I think the issue here is just that you’re unusually fascinated by tried and tested packages.
+
+What normal person actually wants to use a program entirely for its usefulness?
+
+I figured the package was as useful as anyone would actually need!
+
+Don’t you put this on me! Maybe you’re the problem!
+
+/sigh/ Look… things got a little heated there.
+
+I think we both said some things we didn’t mean.
+
+Why don't we just put all this behind us and agree to just call the package mostly-useful.
+
+If that works for you, then go ahead and download the package and add it to your init.el, and we can move on.
+
+I’ll just be over here when you are ready. 
+
 ** License
 
 This package is licensed under the GNU General Public License v3 or later.
